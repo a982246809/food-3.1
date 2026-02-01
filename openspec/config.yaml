@@ -3,11 +3,40 @@ schema: spec-driven
 # Project context (optional)
 # This is shown to AI when creating artifacts.
 # Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  语言要求:所以输出必须使用简体中文
+  项目名称：基于Vue的校园食堂点餐系统
+  
+  一、核心模块建议
+  1. 学生用户端（核心）
+     - 首页/菜单浏览：按食堂、窗口、菜品种类（如荤素、口味）展示菜品，带图片、价格、简介和实时销量。
+     - 购物车与下单：添加菜品、备注口味、选择取餐时间（如“立即取餐”或“预约取餐”）。
+     - 订单中心：
+       - 当前订单状态跟踪（“制作中”、“待取餐”、“已完成”）。
+       - 历史订单查看与再来一单。
+       - 订单评价与反馈（星级、文字、图片）。
+     - 个人中心：个人信息、余额/充值记录、常用地址（如宿舍楼号）。
+     
+  2. 食堂管理端（重点与亮点）
+     - 登录与看板：各档口商家独立登录，首页显示今日关键数据（订单数、销售额、热门菜品）。
+     - 订单管理：实时接收新订单、打印小票（模拟）、一键接单/出餐、处理退款申请。
+     - 菜品管理：对自家菜品进行增删改查、设置每日特价、上架/下架。
+     - 简易数据统计：日/周销售图表、菜品销量排行（使用Echarts等可视化库，能显著提升项目档次）。
+     
+  3. 系统管理后台（可选，体现系统完整性）
+     - 用户管理：学生用户、食堂商户的账户审核与管理。
+     - 食堂与窗口管理：设置食堂楼宇、楼层、档口信息。
+     - 系统监控：订单流水查询、投诉处理、全局公告发布（如“今日某窗口休息”）。
+     
+  4. 创新功能模块
+     - 智能推荐：在首页根据历史订单或热销榜，增加“猜你喜欢”模块。
+     - 取餐提醒：订单状态变为“待取餐”时，向用户端发送模拟通知（可用WebSocket实现简单消息推送）。
+     - 简易社交分享：用户可将“今日午餐”分享到内置的动态墙（类似朋友圈），增加趣味性。
+
+  二、技术栈推荐
+  - 前端：Vue 3 (Composition API), Vue Router, Vuex / Pinia, Axios, UI框架(Element Plus / Vant), ECharts.
+  - 后端：NestJS, JWT.
+  - 数据库：MySQL.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.
