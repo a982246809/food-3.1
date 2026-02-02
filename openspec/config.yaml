@@ -33,7 +33,8 @@ context: |
      - 取餐提醒：订单状态变为“待取餐”时，向用户端发送模拟通知（可用WebSocket实现简单消息推送）。
      - 简易社交分享：用户可将“今日午餐”分享到内置的动态墙（类似朋友圈），增加趣味性。
 
-  二、技术栈推荐
+  二、技术栈
+  - 项目管理工具：pnpm
   - 前端：Vue 3 (Composition API), Vue Router, Vuex / Pinia, Axios, UI框架(Element Plus / Vant), ECharts.
   - 后端：NestJS, JWT.
   - 数据库：MySQL.
