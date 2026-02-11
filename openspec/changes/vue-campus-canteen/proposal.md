@@ -23,5 +23,5 @@
     *   订单社交分享。
 *   **技术栈**:
     *   前端：Vue 3 (Composition API), Pinia, Axios, Vant, ECharts.
-    *   后端：NestJS, JWT.
+    *   后端：NestJS, JWT,prisma.
     *   数据库：MySQL.
