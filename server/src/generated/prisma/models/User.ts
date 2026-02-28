@@ -39,6 +39,7 @@ export type UserMinAggregateOutputType = {
   username: string | null
   password: string | null
   role: $Enums.Role | null
+  status: string | null
   balance: runtime.Decimal | null
   canteenId: string | null
   windowId: string | null
@@ -51,6 +52,7 @@ export type UserMaxAggregateOutputType = {
   username: string | null
   password: string | null
   role: $Enums.Role | null
+  status: string | null
   balance: runtime.Decimal | null
   canteenId: string | null
   windowId: string | null
@@ -63,6 +65,7 @@ export type UserCountAggregateOutputType = {
   username: number
   password: number
   role: number
+  status: number
   balance: number
   canteenId: number
   windowId: number
@@ -85,6 +88,7 @@ export type UserMinAggregateInputType = {
   username?: true
   password?: true
   role?: true
+  status?: true
   balance?: true
   canteenId?: true
   windowId?: true
@@ -97,6 +101,7 @@ export type UserMaxAggregateInputType = {
   username?: true
   password?: true
   role?: true
+  status?: true
   balance?: true
   canteenId?: true
   windowId?: true
@@ -109,6 +114,7 @@ export type UserCountAggregateInputType = {
   username?: true
   password?: true
   role?: true
+  status?: true
   balance?: true
   canteenId?: true
   windowId?: true
@@ -208,6 +214,7 @@ export type UserGroupByOutputType = {
   username: string
   password: string
   role: $Enums.Role
+  status: string
   balance: runtime.Decimal
   canteenId: string | null
   windowId: string | null
@@ -243,6 +250,7 @@ export type UserWhereInput = {
   username?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  status?: Prisma.StringFilter<"User"> | string
   balance?: Prisma.DecimalFilter<"User"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.StringNullableFilter<"User"> | string | null
   windowId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -251,6 +259,8 @@ export type UserWhereInput = {
   canteen?: Prisma.XOR<Prisma.CanteenNullableScalarRelationFilter, Prisma.CanteenWhereInput> | null
   window?: Prisma.XOR<Prisma.WindowNullableScalarRelationFilter, Prisma.WindowWhereInput> | null
   orders?: Prisma.OrderListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
+  announcements?: Prisma.AnnouncementListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -258,6 +268,7 @@ export type UserOrderByWithRelationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   canteenId?: Prisma.SortOrderInput | Prisma.SortOrder
   windowId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -266,6 +277,8 @@ export type UserOrderByWithRelationInput = {
   canteen?: Prisma.CanteenOrderByWithRelationInput
   window?: Prisma.WindowOrderByWithRelationInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
+  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
+  announcements?: Prisma.AnnouncementOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -277,6 +290,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  status?: Prisma.StringFilter<"User"> | string
   balance?: Prisma.DecimalFilter<"User"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.StringNullableFilter<"User"> | string | null
   windowId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -285,6 +299,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   canteen?: Prisma.XOR<Prisma.CanteenNullableScalarRelationFilter, Prisma.CanteenWhereInput> | null
   window?: Prisma.XOR<Prisma.WindowNullableScalarRelationFilter, Prisma.WindowWhereInput> | null
   orders?: Prisma.OrderListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
+  announcements?: Prisma.AnnouncementListRelationFilter
 }, "id" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -292,6 +308,7 @@ export type UserOrderByWithAggregationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   canteenId?: Prisma.SortOrderInput | Prisma.SortOrder
   windowId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -312,6 +329,7 @@ export type UserScalarWhereWithAggregatesInput = {
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+  status?: Prisma.StringWithAggregatesFilter<"User"> | string
   balance?: Prisma.DecimalWithAggregatesFilter<"User"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   windowId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -324,12 +342,15 @@ export type UserCreateInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   canteen?: Prisma.CanteenCreateNestedOneWithoutMerchantsInput
   window?: Prisma.WindowCreateNestedOneWithoutMerchantsInput
   orders?: Prisma.OrderCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -337,12 +358,15 @@ export type UserUncheckedCreateInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: string | null
   windowId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUpdateInput = {
@@ -350,12 +374,15 @@ export type UserUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   canteen?: Prisma.CanteenUpdateOneWithoutMerchantsNestedInput
   window?: Prisma.WindowUpdateOneWithoutMerchantsNestedInput
   orders?: Prisma.OrderUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -363,12 +390,15 @@ export type UserUncheckedUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -376,6 +406,7 @@ export type UserCreateManyInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: string | null
   windowId?: string | null
@@ -388,6 +419,7 @@ export type UserUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -398,6 +430,7 @@ export type UserUncheckedUpdateManyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -416,6 +449,7 @@ export type UserCountOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   canteenId?: Prisma.SortOrder
   windowId?: Prisma.SortOrder
@@ -432,6 +466,7 @@ export type UserMaxOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   canteenId?: Prisma.SortOrder
   windowId?: Prisma.SortOrder
@@ -444,6 +479,7 @@ export type UserMinOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   canteenId?: Prisma.SortOrder
   windowId?: Prisma.SortOrder
@@ -592,16 +628,47 @@ export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrdersInput, Prisma.UserUpdateWithoutOrdersInput>, Prisma.UserUncheckedUpdateWithoutOrdersInput>
 }
 
+export type UserCreateNestedOneWithoutComplaintsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplaintsInput, Prisma.UserUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplaintsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplaintsInput, Prisma.UserUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplaintsInput
+  upsert?: Prisma.UserUpsertWithoutComplaintsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutComplaintsInput, Prisma.UserUpdateWithoutComplaintsInput>, Prisma.UserUncheckedUpdateWithoutComplaintsInput>
+}
+
+export type UserCreateNestedOneWithoutAnnouncementsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAnnouncementsInput, Prisma.UserUncheckedCreateWithoutAnnouncementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnnouncementsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAnnouncementsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAnnouncementsInput, Prisma.UserUncheckedCreateWithoutAnnouncementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnnouncementsInput
+  upsert?: Prisma.UserUpsertWithoutAnnouncementsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnnouncementsInput, Prisma.UserUpdateWithoutAnnouncementsInput>, Prisma.UserUncheckedUpdateWithoutAnnouncementsInput>
+}
+
 export type UserCreateWithoutCanteenInput = {
   id?: string
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   window?: Prisma.WindowCreateNestedOneWithoutMerchantsInput
   orders?: Prisma.OrderCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutCanteenInput = {
@@ -609,11 +676,14 @@ export type UserUncheckedCreateWithoutCanteenInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   windowId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutCanteenInput = {
@@ -650,6 +720,7 @@ export type UserScalarWhereInput = {
   username?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  status?: Prisma.StringFilter<"User"> | string
   balance?: Prisma.DecimalFilter<"User"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.StringNullableFilter<"User"> | string | null
   windowId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -662,11 +733,14 @@ export type UserCreateWithoutWindowInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   canteen?: Prisma.CanteenCreateNestedOneWithoutMerchantsInput
   orders?: Prisma.OrderCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutWindowInput = {
@@ -674,11 +748,14 @@ export type UserUncheckedCreateWithoutWindowInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutWindowInput = {
@@ -712,11 +789,14 @@ export type UserCreateWithoutOrdersInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   canteen?: Prisma.CanteenCreateNestedOneWithoutMerchantsInput
   window?: Prisma.WindowCreateNestedOneWithoutMerchantsInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -724,11 +804,14 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: string | null
   windowId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -752,11 +835,14 @@ export type UserUpdateWithoutOrdersInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   canteen?: Prisma.CanteenUpdateOneWithoutMerchantsNestedInput
   window?: Prisma.WindowUpdateOneWithoutMerchantsNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -764,11 +850,166 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutComplaintsInput = {
+  id?: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  status?: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canteen?: Prisma.CanteenCreateNestedOneWithoutMerchantsInput
+  window?: Prisma.WindowCreateNestedOneWithoutMerchantsInput
+  orders?: Prisma.OrderCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutComplaintsInput = {
+  id?: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  status?: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  canteenId?: string | null
+  windowId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutStudentInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutComplaintsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplaintsInput, Prisma.UserUncheckedCreateWithoutComplaintsInput>
+}
+
+export type UserUpsertWithoutComplaintsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutComplaintsInput, Prisma.UserUncheckedUpdateWithoutComplaintsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplaintsInput, Prisma.UserUncheckedCreateWithoutComplaintsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutComplaintsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutComplaintsInput, Prisma.UserUncheckedUpdateWithoutComplaintsInput>
+}
+
+export type UserUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canteen?: Prisma.CanteenUpdateOneWithoutMerchantsNestedInput
+  window?: Prisma.WindowUpdateOneWithoutMerchantsNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutAnnouncementsInput = {
+  id?: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  status?: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canteen?: Prisma.CanteenCreateNestedOneWithoutMerchantsInput
+  window?: Prisma.WindowCreateNestedOneWithoutMerchantsInput
+  orders?: Prisma.OrderCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutStudentInput
+}
+
+export type UserUncheckedCreateWithoutAnnouncementsInput = {
+  id?: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  status?: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  canteenId?: string | null
+  windowId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutStudentInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutStudentInput
+}
+
+export type UserCreateOrConnectWithoutAnnouncementsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAnnouncementsInput, Prisma.UserUncheckedCreateWithoutAnnouncementsInput>
+}
+
+export type UserUpsertWithoutAnnouncementsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAnnouncementsInput, Prisma.UserUncheckedUpdateWithoutAnnouncementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAnnouncementsInput, Prisma.UserUncheckedCreateWithoutAnnouncementsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAnnouncementsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAnnouncementsInput, Prisma.UserUncheckedUpdateWithoutAnnouncementsInput>
+}
+
+export type UserUpdateWithoutAnnouncementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canteen?: Prisma.CanteenUpdateOneWithoutMerchantsNestedInput
+  window?: Prisma.WindowUpdateOneWithoutMerchantsNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutStudentNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAnnouncementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutStudentNestedInput
 }
 
 export type UserCreateManyCanteenInput = {
@@ -776,6 +1017,7 @@ export type UserCreateManyCanteenInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   windowId?: string | null
   createdAt?: Date | string
@@ -787,11 +1029,14 @@ export type UserUpdateWithoutCanteenInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   window?: Prisma.WindowUpdateOneWithoutMerchantsNestedInput
   orders?: Prisma.OrderUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCanteenInput = {
@@ -799,11 +1044,14 @@ export type UserUncheckedUpdateWithoutCanteenInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCanteenInput = {
@@ -811,6 +1059,7 @@ export type UserUncheckedUpdateManyWithoutCanteenInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   windowId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -822,6 +1071,7 @@ export type UserCreateManyWindowInput = {
   username: string
   password: string
   role?: $Enums.Role
+  status?: string
   balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: string | null
   createdAt?: Date | string
@@ -833,11 +1083,14 @@ export type UserUpdateWithoutWindowInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   canteen?: Prisma.CanteenUpdateOneWithoutMerchantsNestedInput
   orders?: Prisma.OrderUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWindowInput = {
@@ -845,11 +1098,14 @@ export type UserUncheckedUpdateWithoutWindowInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutStudentNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutStudentNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutWindowInput = {
@@ -857,6 +1113,7 @@ export type UserUncheckedUpdateManyWithoutWindowInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   canteenId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -870,10 +1127,14 @@ export type UserUncheckedUpdateManyWithoutWindowInput = {
 
 export type UserCountOutputType = {
   orders: number
+  complaints: number
+  announcements: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   orders?: boolean | UserCountOutputTypeCountOrdersArgs
+  complaints?: boolean | UserCountOutputTypeCountComplaintsArgs
+  announcements?: boolean | UserCountOutputTypeCountAnnouncementsArgs
 }
 
 /**
@@ -893,12 +1154,27 @@ export type UserCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.OrderWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplaintWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAnnouncementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AnnouncementWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   username?: boolean
   password?: boolean
   role?: boolean
+  status?: boolean
   balance?: boolean
   canteenId?: boolean
   windowId?: boolean
@@ -907,6 +1183,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   canteen?: boolean | Prisma.User$canteenArgs<ExtArgs>
   window?: boolean | Prisma.User$windowArgs<ExtArgs>
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
+  complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
+  announcements?: boolean | Prisma.User$announcementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -917,6 +1195,7 @@ export type UserSelectScalar = {
   username?: boolean
   password?: boolean
   role?: boolean
+  status?: boolean
   balance?: boolean
   canteenId?: boolean
   windowId?: boolean
@@ -924,11 +1203,13 @@ export type UserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "password" | "role" | "balance" | "canteenId" | "windowId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "password" | "role" | "status" | "balance" | "canteenId" | "windowId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   canteen?: boolean | Prisma.User$canteenArgs<ExtArgs>
   window?: boolean | Prisma.User$windowArgs<ExtArgs>
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
+  complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
+  announcements?: boolean | Prisma.User$announcementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -938,12 +1219,15 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     canteen: Prisma.$CanteenPayload<ExtArgs> | null
     window: Prisma.$WindowPayload<ExtArgs> | null
     orders: Prisma.$OrderPayload<ExtArgs>[]
+    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
+    announcements: Prisma.$AnnouncementPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     username: string
     password: string
     role: $Enums.Role
+    status: string
     balance: runtime.Decimal
     canteenId: string | null
     windowId: string | null
@@ -1292,6 +1576,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   canteen<T extends Prisma.User$canteenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$canteenArgs<ExtArgs>>): Prisma.Prisma__CanteenClient<runtime.Types.Result.GetResult<Prisma.$CanteenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   window<T extends Prisma.User$windowArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$windowArgs<ExtArgs>>): Prisma.Prisma__WindowClient<runtime.Types.Result.GetResult<Prisma.$WindowPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   orders<T extends Prisma.User$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.User$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  announcements<T extends Prisma.User$announcementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$announcementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1325,6 +1611,7 @@ export interface UserFieldRefs {
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
+  readonly status: Prisma.FieldRef<"User", 'String'>
   readonly balance: Prisma.FieldRef<"User", 'Decimal'>
   readonly canteenId: Prisma.FieldRef<"User", 'String'>
   readonly windowId: Prisma.FieldRef<"User", 'String'>
@@ -1732,6 +2019,54 @@ export type User$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * User.complaints
+ */
+export type User$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Complaint
+   */
+  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Complaint
+   */
+  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplaintInclude<ExtArgs> | null
+  where?: Prisma.ComplaintWhereInput
+  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.ComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
+}
+
+/**
+ * User.announcements
+ */
+export type User$announcementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Announcement
+   */
+  select?: Prisma.AnnouncementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Announcement
+   */
+  omit?: Prisma.AnnouncementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AnnouncementInclude<ExtArgs> | null
+  where?: Prisma.AnnouncementWhereInput
+  orderBy?: Prisma.AnnouncementOrderByWithRelationInput | Prisma.AnnouncementOrderByWithRelationInput[]
+  cursor?: Prisma.AnnouncementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AnnouncementScalarFieldEnum | Prisma.AnnouncementScalarFieldEnum[]
 }
 
 /**

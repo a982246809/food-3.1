@@ -27,6 +27,8 @@ export type AggregateCanteen = {
 export type CanteenMinAggregateOutputType = {
   id: string | null
   name: string | null
+  building: string | null
+  floor: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -34,6 +36,8 @@ export type CanteenMinAggregateOutputType = {
 export type CanteenMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  building: string | null
+  floor: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -41,6 +45,8 @@ export type CanteenMaxAggregateOutputType = {
 export type CanteenCountAggregateOutputType = {
   id: number
   name: number
+  building: number
+  floor: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -50,6 +56,8 @@ export type CanteenCountAggregateOutputType = {
 export type CanteenMinAggregateInputType = {
   id?: true
   name?: true
+  building?: true
+  floor?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -57,6 +65,8 @@ export type CanteenMinAggregateInputType = {
 export type CanteenMaxAggregateInputType = {
   id?: true
   name?: true
+  building?: true
+  floor?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -64,6 +74,8 @@ export type CanteenMaxAggregateInputType = {
 export type CanteenCountAggregateInputType = {
   id?: true
   name?: true
+  building?: true
+  floor?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -144,6 +156,8 @@ export type CanteenGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type CanteenGroupByOutputType = {
   id: string
   name: string
+  building: string | null
+  floor: string | null
   createdAt: Date
   updatedAt: Date
   _count: CanteenCountAggregateOutputType | null
@@ -172,6 +186,8 @@ export type CanteenWhereInput = {
   NOT?: Prisma.CanteenWhereInput | Prisma.CanteenWhereInput[]
   id?: Prisma.StringFilter<"Canteen"> | string
   name?: Prisma.StringFilter<"Canteen"> | string
+  building?: Prisma.StringNullableFilter<"Canteen"> | string | null
+  floor?: Prisma.StringNullableFilter<"Canteen"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Canteen"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Canteen"> | Date | string
   windows?: Prisma.WindowListRelationFilter
@@ -181,6 +197,8 @@ export type CanteenWhereInput = {
 export type CanteenOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  building?: Prisma.SortOrderInput | Prisma.SortOrder
+  floor?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   windows?: Prisma.WindowOrderByRelationAggregateInput
@@ -194,6 +212,8 @@ export type CanteenWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CanteenWhereInput[]
   NOT?: Prisma.CanteenWhereInput | Prisma.CanteenWhereInput[]
   name?: Prisma.StringFilter<"Canteen"> | string
+  building?: Prisma.StringNullableFilter<"Canteen"> | string | null
+  floor?: Prisma.StringNullableFilter<"Canteen"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Canteen"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Canteen"> | Date | string
   windows?: Prisma.WindowListRelationFilter
@@ -203,6 +223,8 @@ export type CanteenWhereUniqueInput = Prisma.AtLeast<{
 export type CanteenOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  building?: Prisma.SortOrderInput | Prisma.SortOrder
+  floor?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CanteenCountOrderByAggregateInput
@@ -216,6 +238,8 @@ export type CanteenScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CanteenScalarWhereWithAggregatesInput | Prisma.CanteenScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Canteen"> | string
   name?: Prisma.StringWithAggregatesFilter<"Canteen"> | string
+  building?: Prisma.StringNullableWithAggregatesFilter<"Canteen"> | string | null
+  floor?: Prisma.StringNullableWithAggregatesFilter<"Canteen"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Canteen"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Canteen"> | Date | string
 }
@@ -223,6 +247,8 @@ export type CanteenScalarWhereWithAggregatesInput = {
 export type CanteenCreateInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   windows?: Prisma.WindowCreateNestedManyWithoutCanteenInput
@@ -232,6 +258,8 @@ export type CanteenCreateInput = {
 export type CanteenUncheckedCreateInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   windows?: Prisma.WindowUncheckedCreateNestedManyWithoutCanteenInput
@@ -241,6 +269,8 @@ export type CanteenUncheckedCreateInput = {
 export type CanteenUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   windows?: Prisma.WindowUpdateManyWithoutCanteenNestedInput
@@ -250,6 +280,8 @@ export type CanteenUpdateInput = {
 export type CanteenUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   windows?: Prisma.WindowUncheckedUpdateManyWithoutCanteenNestedInput
@@ -259,6 +291,8 @@ export type CanteenUncheckedUpdateInput = {
 export type CanteenCreateManyInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -266,6 +300,8 @@ export type CanteenCreateManyInput = {
 export type CanteenUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -273,6 +309,8 @@ export type CanteenUpdateManyMutationInput = {
 export type CanteenUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -291,6 +329,8 @@ export type CanteenOrderByRelevanceInput = {
 export type CanteenCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  building?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -298,6 +338,8 @@ export type CanteenCountOrderByAggregateInput = {
 export type CanteenMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  building?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -305,6 +347,8 @@ export type CanteenMaxOrderByAggregateInput = {
 export type CanteenMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  building?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -347,6 +391,8 @@ export type CanteenUpdateOneRequiredWithoutWindowsNestedInput = {
 export type CanteenCreateWithoutMerchantsInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   windows?: Prisma.WindowCreateNestedManyWithoutCanteenInput
@@ -355,6 +401,8 @@ export type CanteenCreateWithoutMerchantsInput = {
 export type CanteenUncheckedCreateWithoutMerchantsInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   windows?: Prisma.WindowUncheckedCreateNestedManyWithoutCanteenInput
@@ -379,6 +427,8 @@ export type CanteenUpdateToOneWithWhereWithoutMerchantsInput = {
 export type CanteenUpdateWithoutMerchantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   windows?: Prisma.WindowUpdateManyWithoutCanteenNestedInput
@@ -387,6 +437,8 @@ export type CanteenUpdateWithoutMerchantsInput = {
 export type CanteenUncheckedUpdateWithoutMerchantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   windows?: Prisma.WindowUncheckedUpdateManyWithoutCanteenNestedInput
@@ -395,6 +447,8 @@ export type CanteenUncheckedUpdateWithoutMerchantsInput = {
 export type CanteenCreateWithoutWindowsInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   merchants?: Prisma.UserCreateNestedManyWithoutCanteenInput
@@ -403,6 +457,8 @@ export type CanteenCreateWithoutWindowsInput = {
 export type CanteenUncheckedCreateWithoutWindowsInput = {
   id?: string
   name: string
+  building?: string | null
+  floor?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   merchants?: Prisma.UserUncheckedCreateNestedManyWithoutCanteenInput
@@ -427,6 +483,8 @@ export type CanteenUpdateToOneWithWhereWithoutWindowsInput = {
 export type CanteenUpdateWithoutWindowsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   merchants?: Prisma.UserUpdateManyWithoutCanteenNestedInput
@@ -435,6 +493,8 @@ export type CanteenUpdateWithoutWindowsInput = {
 export type CanteenUncheckedUpdateWithoutWindowsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   merchants?: Prisma.UserUncheckedUpdateManyWithoutCanteenNestedInput
@@ -483,6 +543,8 @@ export type CanteenCountOutputTypeCountMerchantsArgs<ExtArgs extends runtime.Typ
 export type CanteenSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  building?: boolean
+  floor?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   windows?: boolean | Prisma.Canteen$windowsArgs<ExtArgs>
@@ -495,11 +557,13 @@ export type CanteenSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type CanteenSelectScalar = {
   id?: boolean
   name?: boolean
+  building?: boolean
+  floor?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CanteenOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["canteen"]>
+export type CanteenOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "building" | "floor" | "createdAt" | "updatedAt", ExtArgs["result"]["canteen"]>
 export type CanteenInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   windows?: boolean | Prisma.Canteen$windowsArgs<ExtArgs>
   merchants?: boolean | Prisma.Canteen$merchantsArgs<ExtArgs>
@@ -515,6 +579,8 @@ export type $CanteenPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    building: string | null
+    floor: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["canteen"]>
@@ -890,6 +956,8 @@ export interface Prisma__CanteenClient<T, Null = never, ExtArgs extends runtime.
 export interface CanteenFieldRefs {
   readonly id: Prisma.FieldRef<"Canteen", 'String'>
   readonly name: Prisma.FieldRef<"Canteen", 'String'>
+  readonly building: Prisma.FieldRef<"Canteen", 'String'>
+  readonly floor: Prisma.FieldRef<"Canteen", 'String'>
   readonly createdAt: Prisma.FieldRef<"Canteen", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Canteen", 'DateTime'>
 }

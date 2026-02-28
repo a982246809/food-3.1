@@ -55,7 +55,9 @@ export const ModelName = {
   Canteen: 'Canteen',
   Window: 'Window',
   Dish: 'Dish',
-  Order: 'Order'
+  Order: 'Order',
+  Complaint: 'Complaint',
+  Announcement: 'Announcement'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,6 +81,7 @@ export const UserScalarFieldEnum = {
   username: 'username',
   password: 'password',
   role: 'role',
+  status: 'status',
   balance: 'balance',
   canteenId: 'canteenId',
   windowId: 'windowId',
@@ -92,6 +95,8 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const CanteenScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  building: 'building',
+  floor: 'floor',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -142,6 +147,31 @@ export const OrderScalarFieldEnum = {
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
+export const ComplaintScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  content: 'content',
+  status: 'status',
+  reply: 'reply',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
+
+
+export const AnnouncementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -169,6 +199,7 @@ export const UserOrderByRelevanceFieldEnum = {
   id: 'id',
   username: 'username',
   password: 'password',
+  status: 'status',
   canteenId: 'canteenId',
   windowId: 'windowId'
 } as const
@@ -178,7 +209,9 @@ export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnu
 
 export const CanteenOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  building: 'building',
+  floor: 'floor'
 } as const
 
 export type CanteenOrderByRelevanceFieldEnum = (typeof CanteenOrderByRelevanceFieldEnum)[keyof typeof CanteenOrderByRelevanceFieldEnum]
@@ -228,4 +261,25 @@ export const OrderOrderByRelevanceFieldEnum = {
 } as const
 
 export type OrderOrderByRelevanceFieldEnum = (typeof OrderOrderByRelevanceFieldEnum)[keyof typeof OrderOrderByRelevanceFieldEnum]
+
+
+export const ComplaintOrderByRelevanceFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  content: 'content',
+  status: 'status',
+  reply: 'reply'
+} as const
+
+export type ComplaintOrderByRelevanceFieldEnum = (typeof ComplaintOrderByRelevanceFieldEnum)[keyof typeof ComplaintOrderByRelevanceFieldEnum]
+
+
+export const AnnouncementOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  authorId: 'authorId'
+} as const
+
+export type AnnouncementOrderByRelevanceFieldEnum = (typeof AnnouncementOrderByRelevanceFieldEnum)[keyof typeof AnnouncementOrderByRelevanceFieldEnum]
 

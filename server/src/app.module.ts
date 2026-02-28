@@ -8,6 +8,9 @@ import { WindowModule } from './window/window.module.js';
 import { DishModule } from './dish/dish.module.js';
 import { OrderModule } from './order/order.module.js';
 import { StatisticsModule } from './statistics/statistics.module.js';
+import { UserModule } from './user/user.module.js';
+import { ComplaintModule } from './complaint/complaint.module.js';
+import { AnnouncementModule } from './announcement/announcement.module.js';
 
 
 @Module({
@@ -19,8 +22,12 @@ import { StatisticsModule } from './statistics/statistics.module.js';
     DishModule,
     OrderModule,
     StatisticsModule,
+    UserModule,
+    ComplaintModule,
+    AnnouncementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+

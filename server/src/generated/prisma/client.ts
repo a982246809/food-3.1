@@ -64,3 +64,13 @@ export type Dish = Prisma.DishModel
  * 
  */
 export type Order = Prisma.OrderModel
+/**
+ * Model Complaint
+ * 
+ */
+export type Complaint = Prisma.ComplaintModel
+/**
+ * Model Announcement
+ * 
+ */
+export type Announcement = Prisma.AnnouncementModel
