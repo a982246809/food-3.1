@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { WindowService } from './window.service.js';
 import { CreateWindowDto } from './dto/create-window.dto.js';
 import { UpdateWindowDto } from './dto/update-window.dto.js';
@@ -13,8 +13,8 @@ export class WindowController {
   }
 
   @Get()
-  findAll() {
-    return this.windowService.findAll();
+  findAll(@Query('canteenId') canteenId?: string) {
+    return this.windowService.findAll(canteenId);
   }
 
   @Get(':id')

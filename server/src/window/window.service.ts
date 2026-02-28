@@ -13,10 +13,18 @@ export class WindowService {
     });
   }
 
-  findAll() {
+  findAll(canteenId?: string) {
     return this.prisma.window.findMany({
+      where: canteenId ? { canteenId } : undefined,
       include: {
         canteen: true,
+        dishes: {
+          where: { isOnSale: true },
+          orderBy: { createdAt: 'desc' },
+        },
+        merchants: {
+          select: { id: true, username: true },
+        },
       },
     });
   }
