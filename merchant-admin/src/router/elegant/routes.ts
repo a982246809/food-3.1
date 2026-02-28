@@ -40,35 +40,6 @@ export const generatedRoutes: GeneratedRoute[] = [
     }
   },
   {
-    name: 'canteen',
-    path: '/canteen',
-    component: 'layout.base',
-    meta: {
-      title: 'canteen',
-      i18nKey: 'route.canteen'
-    },
-    children: [
-      {
-        name: 'canteen_building',
-        path: '/canteen/building',
-        component: 'view.canteen_building',
-        meta: {
-          title: 'canteen_building',
-          i18nKey: 'route.canteen_building'
-        }
-      },
-      {
-        name: 'canteen_window',
-        path: '/canteen/window',
-        component: 'view.canteen_window',
-        meta: {
-          title: 'canteen_window',
-          i18nKey: 'route.canteen_window'
-        }
-      }
-    ]
-  },
-  {
     name: 'dish',
     path: '/dish',
     component: 'layout.base$view.dish',
@@ -114,44 +85,6 @@ export const generatedRoutes: GeneratedRoute[] = [
     }
   },
   {
-    name: 'monitor',
-    path: '/monitor',
-    component: 'layout.base',
-    meta: {
-      title: 'monitor',
-      i18nKey: 'route.monitor'
-    },
-    children: [
-      {
-        name: 'monitor_announcement',
-        path: '/monitor/announcement',
-        component: 'view.monitor_announcement',
-        meta: {
-          title: 'monitor_announcement',
-          i18nKey: 'route.monitor_announcement'
-        }
-      },
-      {
-        name: 'monitor_complaint',
-        path: '/monitor/complaint',
-        component: 'view.monitor_complaint',
-        meta: {
-          title: 'monitor_complaint',
-          i18nKey: 'route.monitor_complaint'
-        }
-      },
-      {
-        name: 'monitor_order',
-        path: '/monitor/order',
-        component: 'view.monitor_order',
-        meta: {
-          title: 'monitor_order',
-          i18nKey: 'route.monitor_order'
-        }
-      }
-    ]
-  },
-  {
     name: 'order',
     path: '/order',
     component: 'layout.base$view.order',
@@ -159,34 +92,5 @@ export const generatedRoutes: GeneratedRoute[] = [
       title: 'order',
       i18nKey: 'route.order'
     }
-  },
-  {
-    name: 'user',
-    path: '/user',
-    component: 'layout.base',
-    meta: {
-      title: 'user',
-      i18nKey: 'route.user'
-    },
-    children: [
-      {
-        name: 'user_merchant',
-        path: '/user/merchant',
-        component: 'view.user_merchant',
-        meta: {
-          title: 'user_merchant',
-          i18nKey: 'route.user_merchant'
-        }
-      },
-      {
-        name: 'user_student',
-        path: '/user/student',
-        component: 'view.user_student',
-        meta: {
-          title: 'user_student',
-          i18nKey: 'route.user_student'
-        }
-      }
-    ]
   }
 ];

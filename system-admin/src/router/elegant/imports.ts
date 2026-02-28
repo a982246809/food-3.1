@@ -22,12 +22,10 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   login: () => import("@/views/_builtin/login/index.vue"),
   canteen_building: () => import("@/views/canteen/building/index.vue"),
   canteen_window: () => import("@/views/canteen/window/index.vue"),
-  dish: () => import("@/views/dish/index.vue"),
   home: () => import("@/views/home/index.vue"),
   monitor_announcement: () => import("@/views/monitor/announcement/index.vue"),
   monitor_complaint: () => import("@/views/monitor/complaint/index.vue"),
   monitor_order: () => import("@/views/monitor/order/index.vue"),
-  order: () => import("@/views/order/index.vue"),
   user_merchant: () => import("@/views/user/merchant/index.vue"),
   user_student: () => import("@/views/user/student/index.vue"),
 };

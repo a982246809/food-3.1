@@ -69,15 +69,6 @@ export const generatedRoutes: GeneratedRoute[] = [
     ]
   },
   {
-    name: 'dish',
-    path: '/dish',
-    component: 'layout.base$view.dish',
-    meta: {
-      title: 'dish',
-      i18nKey: 'route.dish'
-    }
-  },
-  {
     name: 'home',
     path: '/home',
     component: 'layout.base$view.home',
@@ -150,15 +141,6 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       }
     ]
-  },
-  {
-    name: 'order',
-    path: '/order',
-    component: 'layout.base$view.order',
-    meta: {
-      title: 'order',
-      i18nKey: 'route.order'
-    }
   },
   {
     name: 'user',

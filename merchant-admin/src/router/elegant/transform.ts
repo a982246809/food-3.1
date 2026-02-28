@@ -166,21 +166,11 @@ const routeMap: RouteMap = {
   "403": "/403",
   "404": "/404",
   "500": "/500",
-  "canteen": "/canteen",
-  "canteen_building": "/canteen/building",
-  "canteen_window": "/canteen/window",
   "dish": "/dish",
   "home": "/home",
   "iframe-page": "/iframe-page/:url",
   "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?",
-  "monitor": "/monitor",
-  "monitor_announcement": "/monitor/announcement",
-  "monitor_complaint": "/monitor/complaint",
-  "monitor_order": "/monitor/order",
-  "order": "/order",
-  "user": "/user",
-  "user_merchant": "/user/merchant",
-  "user_student": "/user/student"
+  "order": "/order"
 };
 
 /**

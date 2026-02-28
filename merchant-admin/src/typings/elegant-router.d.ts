@@ -20,21 +20,11 @@ declare module "@elegant-router/types" {
     "403": "/403";
     "404": "/404";
     "500": "/500";
-    "canteen": "/canteen";
-    "canteen_building": "/canteen/building";
-    "canteen_window": "/canteen/window";
     "dish": "/dish";
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
-    "monitor": "/monitor";
-    "monitor_announcement": "/monitor/announcement";
-    "monitor_complaint": "/monitor/complaint";
-    "monitor_order": "/monitor/order";
     "order": "/order";
-    "user": "/user";
-    "user_merchant": "/user/merchant";
-    "user_student": "/user/student";
   };
 
   /**
@@ -69,14 +59,11 @@ declare module "@elegant-router/types" {
     | "403"
     | "404"
     | "500"
-    | "canteen"
     | "dish"
     | "home"
     | "iframe-page"
     | "login"
-    | "monitor"
     | "order"
-    | "user"
   >;
 
   /**
@@ -98,16 +85,9 @@ declare module "@elegant-router/types" {
     | "500"
     | "iframe-page"
     | "login"
-    | "canteen_building"
-    | "canteen_window"
     | "dish"
     | "home"
-    | "monitor_announcement"
-    | "monitor_complaint"
-    | "monitor_order"
     | "order"
-    | "user_merchant"
-    | "user_student"
   >;
 
   /**

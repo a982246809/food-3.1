@@ -226,8 +226,16 @@ const local: App.I18n.Schema = {
     500: '服务器错误',
     'iframe-page': '外链页面',
     home: '首页',
-    dish: '菜品管理',
-    order: '订单管理'
+    canteen: '食堂管理',
+    canteen_building: '楼栋管理',
+    canteen_window: '窗口管理',
+    monitor: '监管控制台',
+    monitor_announcement: '公告管理',
+    monitor_complaint: '投诉管理',
+    monitor_order: '订单大盘',
+    user: '用户管理',
+    user_merchant: '商家管理',
+    user_student: '学生管理'
   },
   page: {
     login: {

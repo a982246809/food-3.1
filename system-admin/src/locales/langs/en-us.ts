@@ -230,8 +230,16 @@ const local: App.I18n.Schema = {
     500: 'Server Error',
     'iframe-page': 'Iframe',
     home: 'Home',
-    dish: 'Dish Management',
-    order: 'Order Management'
+    canteen: 'Canteen',
+    canteen_building: 'Building',
+    canteen_window: 'Window',
+    monitor: 'Monitor',
+    monitor_announcement: 'Announcement',
+    monitor_complaint: 'Complaint',
+    monitor_order: 'Order',
+    user: 'User',
+    user_merchant: 'Merchant',
+    user_student: 'Student'
   },
   page: {
     login: {
