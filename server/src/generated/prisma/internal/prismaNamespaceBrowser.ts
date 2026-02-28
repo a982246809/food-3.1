@@ -81,6 +81,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   balance: 'balance',
   canteenId: 'canteenId',
+  windowId: 'windowId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -115,6 +116,7 @@ export const DishScalarFieldEnum = {
   name: 'name',
   price: 'price',
   stock: 'stock',
+  isOnSale: 'isOnSale',
   isSpecial: 'isSpecial',
   imageUrl: 'imageUrl',
   createdAt: 'createdAt',
@@ -167,7 +169,8 @@ export const UserOrderByRelevanceFieldEnum = {
   id: 'id',
   username: 'username',
   password: 'password',
-  canteenId: 'canteenId'
+  canteenId: 'canteenId',
+  windowId: 'windowId'
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]

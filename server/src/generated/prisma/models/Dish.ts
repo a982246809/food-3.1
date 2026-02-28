@@ -42,6 +42,7 @@ export type DishMinAggregateOutputType = {
   name: string | null
   price: runtime.Decimal | null
   stock: number | null
+  isOnSale: boolean | null
   isSpecial: boolean | null
   imageUrl: string | null
   createdAt: Date | null
@@ -54,6 +55,7 @@ export type DishMaxAggregateOutputType = {
   name: string | null
   price: runtime.Decimal | null
   stock: number | null
+  isOnSale: boolean | null
   isSpecial: boolean | null
   imageUrl: string | null
   createdAt: Date | null
@@ -66,6 +68,7 @@ export type DishCountAggregateOutputType = {
   name: number
   price: number
   stock: number
+  isOnSale: number
   isSpecial: number
   imageUrl: number
   createdAt: number
@@ -90,6 +93,7 @@ export type DishMinAggregateInputType = {
   name?: true
   price?: true
   stock?: true
+  isOnSale?: true
   isSpecial?: true
   imageUrl?: true
   createdAt?: true
@@ -102,6 +106,7 @@ export type DishMaxAggregateInputType = {
   name?: true
   price?: true
   stock?: true
+  isOnSale?: true
   isSpecial?: true
   imageUrl?: true
   createdAt?: true
@@ -114,6 +119,7 @@ export type DishCountAggregateInputType = {
   name?: true
   price?: true
   stock?: true
+  isOnSale?: true
   isSpecial?: true
   imageUrl?: true
   createdAt?: true
@@ -213,6 +219,7 @@ export type DishGroupByOutputType = {
   name: string
   price: runtime.Decimal
   stock: number
+  isOnSale: boolean
   isSpecial: boolean
   imageUrl: string | null
   createdAt: Date
@@ -248,6 +255,7 @@ export type DishWhereInput = {
   name?: Prisma.StringFilter<"Dish"> | string
   price?: Prisma.DecimalFilter<"Dish"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"Dish"> | number
+  isOnSale?: Prisma.BoolFilter<"Dish"> | boolean
   isSpecial?: Prisma.BoolFilter<"Dish"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"Dish"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Dish"> | Date | string
@@ -261,6 +269,7 @@ export type DishOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  isOnSale?: Prisma.SortOrder
   isSpecial?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -278,6 +287,7 @@ export type DishWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Dish"> | string
   price?: Prisma.DecimalFilter<"Dish"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"Dish"> | number
+  isOnSale?: Prisma.BoolFilter<"Dish"> | boolean
   isSpecial?: Prisma.BoolFilter<"Dish"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"Dish"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Dish"> | Date | string
@@ -291,6 +301,7 @@ export type DishOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  isOnSale?: Prisma.SortOrder
   isSpecial?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -311,6 +322,7 @@ export type DishScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Dish"> | string
   price?: Prisma.DecimalWithAggregatesFilter<"Dish"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntWithAggregatesFilter<"Dish"> | number
+  isOnSale?: Prisma.BoolWithAggregatesFilter<"Dish"> | boolean
   isSpecial?: Prisma.BoolWithAggregatesFilter<"Dish"> | boolean
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Dish"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Dish"> | Date | string
@@ -322,6 +334,7 @@ export type DishCreateInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -335,6 +348,7 @@ export type DishUncheckedCreateInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -346,6 +360,7 @@ export type DishUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -359,6 +374,7 @@ export type DishUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -371,6 +387,7 @@ export type DishCreateManyInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -382,6 +399,7 @@ export type DishUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -394,6 +412,7 @@ export type DishUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -422,6 +441,7 @@ export type DishCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  isOnSale?: Prisma.SortOrder
   isSpecial?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -439,6 +459,7 @@ export type DishMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  isOnSale?: Prisma.SortOrder
   isSpecial?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -451,6 +472,7 @@ export type DishMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   price?: Prisma.SortOrder
   stock?: Prisma.SortOrder
+  isOnSale?: Prisma.SortOrder
   isSpecial?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -521,6 +543,7 @@ export type DishCreateWithoutWindowInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -532,6 +555,7 @@ export type DishUncheckedCreateWithoutWindowInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -573,6 +597,7 @@ export type DishScalarWhereInput = {
   name?: Prisma.StringFilter<"Dish"> | string
   price?: Prisma.DecimalFilter<"Dish"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"Dish"> | number
+  isOnSale?: Prisma.BoolFilter<"Dish"> | boolean
   isSpecial?: Prisma.BoolFilter<"Dish"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"Dish"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Dish"> | Date | string
@@ -584,6 +609,7 @@ export type DishCreateManyWindowInput = {
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: string | null
   createdAt?: Date | string
@@ -595,6 +621,7 @@ export type DishUpdateWithoutWindowInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -606,6 +633,7 @@ export type DishUncheckedUpdateWithoutWindowInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -617,6 +645,7 @@ export type DishUncheckedUpdateManyWithoutWindowInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
+  isOnSale?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSpecial?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -631,6 +660,7 @@ export type DishSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   price?: boolean
   stock?: boolean
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: boolean
   createdAt?: boolean
@@ -646,13 +676,14 @@ export type DishSelectScalar = {
   name?: boolean
   price?: boolean
   stock?: boolean
+  isOnSale?: boolean
   isSpecial?: boolean
   imageUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type DishOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "windowId" | "name" | "price" | "stock" | "isSpecial" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["dish"]>
+export type DishOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "windowId" | "name" | "price" | "stock" | "isOnSale" | "isSpecial" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["dish"]>
 export type DishInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   window?: boolean | Prisma.WindowDefaultArgs<ExtArgs>
 }
@@ -668,6 +699,7 @@ export type $DishPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     name: string
     price: runtime.Decimal
     stock: number
+    isOnSale: boolean
     isSpecial: boolean
     imageUrl: string | null
     createdAt: Date
@@ -1047,6 +1079,7 @@ export interface DishFieldRefs {
   readonly name: Prisma.FieldRef<"Dish", 'String'>
   readonly price: Prisma.FieldRef<"Dish", 'Decimal'>
   readonly stock: Prisma.FieldRef<"Dish", 'Int'>
+  readonly isOnSale: Prisma.FieldRef<"Dish", 'Boolean'>
   readonly isSpecial: Prisma.FieldRef<"Dish", 'Boolean'>
   readonly imageUrl: Prisma.FieldRef<"Dish", 'String'>
   readonly createdAt: Prisma.FieldRef<"Dish", 'DateTime'>

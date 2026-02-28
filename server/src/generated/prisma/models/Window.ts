@@ -185,6 +185,7 @@ export type WindowWhereInput = {
   canteen?: Prisma.XOR<Prisma.CanteenScalarRelationFilter, Prisma.CanteenWhereInput>
   dishes?: Prisma.DishListRelationFilter
   orders?: Prisma.OrderListRelationFilter
+  merchants?: Prisma.UserListRelationFilter
 }
 
 export type WindowOrderByWithRelationInput = {
@@ -196,6 +197,7 @@ export type WindowOrderByWithRelationInput = {
   canteen?: Prisma.CanteenOrderByWithRelationInput
   dishes?: Prisma.DishOrderByRelationAggregateInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
+  merchants?: Prisma.UserOrderByRelationAggregateInput
   _relevance?: Prisma.WindowOrderByRelevanceInput
 }
 
@@ -211,6 +213,7 @@ export type WindowWhereUniqueInput = Prisma.AtLeast<{
   canteen?: Prisma.XOR<Prisma.CanteenScalarRelationFilter, Prisma.CanteenWhereInput>
   dishes?: Prisma.DishListRelationFilter
   orders?: Prisma.OrderListRelationFilter
+  merchants?: Prisma.UserListRelationFilter
 }, "id">
 
 export type WindowOrderByWithAggregationInput = {
@@ -243,6 +246,7 @@ export type WindowCreateInput = {
   canteen: Prisma.CanteenCreateNestedOneWithoutWindowsInput
   dishes?: Prisma.DishCreateNestedManyWithoutWindowInput
   orders?: Prisma.OrderCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserCreateNestedManyWithoutWindowInput
 }
 
 export type WindowUncheckedCreateInput = {
@@ -253,6 +257,7 @@ export type WindowUncheckedCreateInput = {
   updatedAt?: Date | string
   dishes?: Prisma.DishUncheckedCreateNestedManyWithoutWindowInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserUncheckedCreateNestedManyWithoutWindowInput
 }
 
 export type WindowUpdateInput = {
@@ -263,6 +268,7 @@ export type WindowUpdateInput = {
   canteen?: Prisma.CanteenUpdateOneRequiredWithoutWindowsNestedInput
   dishes?: Prisma.DishUpdateManyWithoutWindowNestedInput
   orders?: Prisma.OrderUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowUncheckedUpdateInput = {
@@ -273,6 +279,7 @@ export type WindowUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dishes?: Prisma.DishUncheckedUpdateManyWithoutWindowNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUncheckedUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowCreateManyInput = {
@@ -296,6 +303,11 @@ export type WindowUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type WindowNullableScalarRelationFilter = {
+  is?: Prisma.WindowWhereInput | null
+  isNot?: Prisma.WindowWhereInput | null
 }
 
 export type WindowListRelationFilter = {
@@ -341,6 +353,22 @@ export type WindowMinOrderByAggregateInput = {
 export type WindowScalarRelationFilter = {
   is?: Prisma.WindowWhereInput
   isNot?: Prisma.WindowWhereInput
+}
+
+export type WindowCreateNestedOneWithoutMerchantsInput = {
+  create?: Prisma.XOR<Prisma.WindowCreateWithoutMerchantsInput, Prisma.WindowUncheckedCreateWithoutMerchantsInput>
+  connectOrCreate?: Prisma.WindowCreateOrConnectWithoutMerchantsInput
+  connect?: Prisma.WindowWhereUniqueInput
+}
+
+export type WindowUpdateOneWithoutMerchantsNestedInput = {
+  create?: Prisma.XOR<Prisma.WindowCreateWithoutMerchantsInput, Prisma.WindowUncheckedCreateWithoutMerchantsInput>
+  connectOrCreate?: Prisma.WindowCreateOrConnectWithoutMerchantsInput
+  upsert?: Prisma.WindowUpsertWithoutMerchantsInput
+  disconnect?: Prisma.WindowWhereInput | boolean
+  delete?: Prisma.WindowWhereInput | boolean
+  connect?: Prisma.WindowWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WindowUpdateToOneWithWhereWithoutMerchantsInput, Prisma.WindowUpdateWithoutMerchantsInput>, Prisma.WindowUncheckedUpdateWithoutMerchantsInput>
 }
 
 export type WindowCreateNestedManyWithoutCanteenInput = {
@@ -413,6 +441,62 @@ export type WindowUpdateOneRequiredWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WindowUpdateToOneWithWhereWithoutOrdersInput, Prisma.WindowUpdateWithoutOrdersInput>, Prisma.WindowUncheckedUpdateWithoutOrdersInput>
 }
 
+export type WindowCreateWithoutMerchantsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canteen: Prisma.CanteenCreateNestedOneWithoutWindowsInput
+  dishes?: Prisma.DishCreateNestedManyWithoutWindowInput
+  orders?: Prisma.OrderCreateNestedManyWithoutWindowInput
+}
+
+export type WindowUncheckedCreateWithoutMerchantsInput = {
+  id?: string
+  canteenId: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  dishes?: Prisma.DishUncheckedCreateNestedManyWithoutWindowInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutWindowInput
+}
+
+export type WindowCreateOrConnectWithoutMerchantsInput = {
+  where: Prisma.WindowWhereUniqueInput
+  create: Prisma.XOR<Prisma.WindowCreateWithoutMerchantsInput, Prisma.WindowUncheckedCreateWithoutMerchantsInput>
+}
+
+export type WindowUpsertWithoutMerchantsInput = {
+  update: Prisma.XOR<Prisma.WindowUpdateWithoutMerchantsInput, Prisma.WindowUncheckedUpdateWithoutMerchantsInput>
+  create: Prisma.XOR<Prisma.WindowCreateWithoutMerchantsInput, Prisma.WindowUncheckedCreateWithoutMerchantsInput>
+  where?: Prisma.WindowWhereInput
+}
+
+export type WindowUpdateToOneWithWhereWithoutMerchantsInput = {
+  where?: Prisma.WindowWhereInput
+  data: Prisma.XOR<Prisma.WindowUpdateWithoutMerchantsInput, Prisma.WindowUncheckedUpdateWithoutMerchantsInput>
+}
+
+export type WindowUpdateWithoutMerchantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canteen?: Prisma.CanteenUpdateOneRequiredWithoutWindowsNestedInput
+  dishes?: Prisma.DishUpdateManyWithoutWindowNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutWindowNestedInput
+}
+
+export type WindowUncheckedUpdateWithoutMerchantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  canteenId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dishes?: Prisma.DishUncheckedUpdateManyWithoutWindowNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutWindowNestedInput
+}
+
 export type WindowCreateWithoutCanteenInput = {
   id?: string
   name: string
@@ -420,6 +504,7 @@ export type WindowCreateWithoutCanteenInput = {
   updatedAt?: Date | string
   dishes?: Prisma.DishCreateNestedManyWithoutWindowInput
   orders?: Prisma.OrderCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserCreateNestedManyWithoutWindowInput
 }
 
 export type WindowUncheckedCreateWithoutCanteenInput = {
@@ -429,6 +514,7 @@ export type WindowUncheckedCreateWithoutCanteenInput = {
   updatedAt?: Date | string
   dishes?: Prisma.DishUncheckedCreateNestedManyWithoutWindowInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserUncheckedCreateNestedManyWithoutWindowInput
 }
 
 export type WindowCreateOrConnectWithoutCanteenInput = {
@@ -475,6 +561,7 @@ export type WindowCreateWithoutDishesInput = {
   updatedAt?: Date | string
   canteen: Prisma.CanteenCreateNestedOneWithoutWindowsInput
   orders?: Prisma.OrderCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserCreateNestedManyWithoutWindowInput
 }
 
 export type WindowUncheckedCreateWithoutDishesInput = {
@@ -484,6 +571,7 @@ export type WindowUncheckedCreateWithoutDishesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserUncheckedCreateNestedManyWithoutWindowInput
 }
 
 export type WindowCreateOrConnectWithoutDishesInput = {
@@ -509,6 +597,7 @@ export type WindowUpdateWithoutDishesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   canteen?: Prisma.CanteenUpdateOneRequiredWithoutWindowsNestedInput
   orders?: Prisma.OrderUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowUncheckedUpdateWithoutDishesInput = {
@@ -518,6 +607,7 @@ export type WindowUncheckedUpdateWithoutDishesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUncheckedUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowCreateWithoutOrdersInput = {
@@ -527,6 +617,7 @@ export type WindowCreateWithoutOrdersInput = {
   updatedAt?: Date | string
   canteen: Prisma.CanteenCreateNestedOneWithoutWindowsInput
   dishes?: Prisma.DishCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserCreateNestedManyWithoutWindowInput
 }
 
 export type WindowUncheckedCreateWithoutOrdersInput = {
@@ -536,6 +627,7 @@ export type WindowUncheckedCreateWithoutOrdersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   dishes?: Prisma.DishUncheckedCreateNestedManyWithoutWindowInput
+  merchants?: Prisma.UserUncheckedCreateNestedManyWithoutWindowInput
 }
 
 export type WindowCreateOrConnectWithoutOrdersInput = {
@@ -561,6 +653,7 @@ export type WindowUpdateWithoutOrdersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   canteen?: Prisma.CanteenUpdateOneRequiredWithoutWindowsNestedInput
   dishes?: Prisma.DishUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowUncheckedUpdateWithoutOrdersInput = {
@@ -570,6 +663,7 @@ export type WindowUncheckedUpdateWithoutOrdersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dishes?: Prisma.DishUncheckedUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUncheckedUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowCreateManyCanteenInput = {
@@ -586,6 +680,7 @@ export type WindowUpdateWithoutCanteenInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dishes?: Prisma.DishUpdateManyWithoutWindowNestedInput
   orders?: Prisma.OrderUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowUncheckedUpdateWithoutCanteenInput = {
@@ -595,6 +690,7 @@ export type WindowUncheckedUpdateWithoutCanteenInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dishes?: Prisma.DishUncheckedUpdateManyWithoutWindowNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutWindowNestedInput
+  merchants?: Prisma.UserUncheckedUpdateManyWithoutWindowNestedInput
 }
 
 export type WindowUncheckedUpdateManyWithoutCanteenInput = {
@@ -612,11 +708,13 @@ export type WindowUncheckedUpdateManyWithoutCanteenInput = {
 export type WindowCountOutputType = {
   dishes: number
   orders: number
+  merchants: number
 }
 
 export type WindowCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   dishes?: boolean | WindowCountOutputTypeCountDishesArgs
   orders?: boolean | WindowCountOutputTypeCountOrdersArgs
+  merchants?: boolean | WindowCountOutputTypeCountMerchantsArgs
 }
 
 /**
@@ -643,6 +741,13 @@ export type WindowCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.OrderWhereInput
 }
 
+/**
+ * WindowCountOutputType without action
+ */
+export type WindowCountOutputTypeCountMerchantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserWhereInput
+}
+
 
 export type WindowSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -653,6 +758,7 @@ export type WindowSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   canteen?: boolean | Prisma.CanteenDefaultArgs<ExtArgs>
   dishes?: boolean | Prisma.Window$dishesArgs<ExtArgs>
   orders?: boolean | Prisma.Window$ordersArgs<ExtArgs>
+  merchants?: boolean | Prisma.Window$merchantsArgs<ExtArgs>
   _count?: boolean | Prisma.WindowCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["window"]>
 
@@ -671,6 +777,7 @@ export type WindowInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   canteen?: boolean | Prisma.CanteenDefaultArgs<ExtArgs>
   dishes?: boolean | Prisma.Window$dishesArgs<ExtArgs>
   orders?: boolean | Prisma.Window$ordersArgs<ExtArgs>
+  merchants?: boolean | Prisma.Window$merchantsArgs<ExtArgs>
   _count?: boolean | Prisma.WindowCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -680,6 +787,7 @@ export type $WindowPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     canteen: Prisma.$CanteenPayload<ExtArgs>
     dishes: Prisma.$DishPayload<ExtArgs>[]
     orders: Prisma.$OrderPayload<ExtArgs>[]
+    merchants: Prisma.$UserPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1030,6 +1138,7 @@ export interface Prisma__WindowClient<T, Null = never, ExtArgs extends runtime.T
   canteen<T extends Prisma.CanteenDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CanteenDefaultArgs<ExtArgs>>): Prisma.Prisma__CanteenClient<runtime.Types.Result.GetResult<Prisma.$CanteenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   dishes<T extends Prisma.Window$dishesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Window$dishesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DishPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orders<T extends Prisma.Window$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Window$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  merchants<T extends Prisma.Window$merchantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Window$merchantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1452,6 +1561,30 @@ export type Window$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * Window.merchants
+ */
+export type Window$merchantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
+  cursor?: Prisma.UserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
 }
 
 /**

@@ -4,5 +4,6 @@ export class CreateDishDto {
   price: number;
   stock?: number;
   isSpecial?: boolean;
+  isOnSale?: boolean;
   imageUrl?: string;
 }

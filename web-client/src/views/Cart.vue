@@ -1,6 +1,6 @@
 <template>
   <div class="cart-container">
-    <van-nav-bar title="购物车" left-arrow @click-left="onClickLeft" fixed placeholder />
+    <van-nav-bar title="购物车" fixed placeholder />
     
     <div v-if="cartItems.length > 0" class="cart-content">
       <van-swipe-cell v-for="item in cartItems" :key="item.id">
@@ -59,6 +59,16 @@
       :loading="isSubmitting"
       class="submit-bar"
     />
+
+    <!-- Padding for bottom tabbar -->
+    <div style="height: 50px;"></div>
+
+    <van-tabbar route>
+      <van-tabbar-item replace to="/" icon="shop-o">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/cart" icon="cart-o" :badge="totalCartItems || ''">购物车</van-tabbar-item>
+      <van-tabbar-item replace to="/orders" icon="orders-o">订单</van-tabbar-item>
+      <van-tabbar-item replace to="/profile" icon="user-o">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -90,9 +100,9 @@ const totalPrice = computed(() => {
   return cartItems.value.reduce((total, item) => total + (item.price * item.quantity), 0);
 });
 
-const onClickLeft = () => {
-  router.back();
-};
+const totalCartItems = computed(() => {
+  return cartItems.value.reduce((total, item) => total + item.quantity, 0);
+});
 
 const removeItem = (id: string) => {
   const item = cartItems.value.find(i => i.id === id);
@@ -163,7 +173,7 @@ const onSubmit = async () => {
   margin-top: 12px;
 }
 .submit-bar {
-  bottom: 0;
+  bottom: 50px;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
 }
 </style>

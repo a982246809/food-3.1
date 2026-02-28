@@ -9,11 +9,15 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() body: any) {
-    const user = await this.authService.validateUser(body.username, body.password);
+    const user = await this.authService.validateUser(body.userName || body.username, body.password);
     if (!user) {
-      return { statusCode: 401, message: 'Invalid credentials' };
+      return { code: '8888', msg: 'Invalid credentials', data: null };
     }
-    return this.authService.login(user);
+    const tokenData = await this.authService.login(user);
+    return {
+      token: tokenData.access_token,
+      refreshToken: tokenData.access_token
+    };
   }
 
   @Post('register')
@@ -22,8 +26,14 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req: any) {
-    return req.user;
+  @Get('getUserInfo')
+  getUserInfo(@Request() req: any) {
+    const user = req.user;
+    return {
+      userId: user.id || user.sub,
+      userName: user.username,
+      roles: [user.role],
+      buttons: []
+    };
   }
 }

@@ -7,6 +7,8 @@ import { CanteenModule } from './canteen/canteen.module.js';
 import { WindowModule } from './window/window.module.js';
 import { DishModule } from './dish/dish.module.js';
 import { OrderModule } from './order/order.module.js';
+import { StatisticsModule } from './statistics/statistics.module.js';
+
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { OrderModule } from './order/order.module.js';
     WindowModule,
     DishModule,
     OrderModule,
+    StatisticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

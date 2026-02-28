@@ -1,20 +1,22 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
 import { DishService } from './dish.service.js';
 import { CreateDishDto } from './dto/create-dish.dto.js';
 import { UpdateDishDto } from './dto/update-dish.dto.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 
 @Controller('dish')
+@UseGuards(JwtAuthGuard)
 export class DishController {
   constructor(private readonly dishService: DishService) {}
 
   @Post()
-  create(@Body() createDishDto: CreateDishDto) {
-    return this.dishService.create(createDishDto);
+  create(@Request() req, @Body() createDishDto: CreateDishDto) {
+    return this.dishService.create(createDishDto, req.user);
   }
 
   @Get()
-  findAll() {
-    return this.dishService.findAll();
+  findAll(@Request() req) {
+    return this.dishService.findAll(req.user);
   }
 
   @Get(':id')

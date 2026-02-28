@@ -65,7 +65,7 @@ const onSubmit = async () => {
       localStorage.setItem('token', res.access_token);
       localStorage.setItem('user', JSON.stringify(res.user));
       showSuccessToast(isRegister.value ? '注册成功' : '登录成功');
-      router.push('/');
+      router.replace('/');
     } else {
        showFailToast(res.message || '操作失败');
     }
