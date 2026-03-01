@@ -61,8 +61,9 @@ const onSubmit = async () => {
       role: 'STUDENT'
     });
     
-    if (res.access_token) {
-      localStorage.setItem('token', res.access_token);
+    const token = res.token || res.access_token;
+    if (token) {
+      localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(res.user));
       showSuccessToast(isRegister.value ? '注册成功' : '登录成功');
       router.replace('/');

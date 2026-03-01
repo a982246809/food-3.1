@@ -3,12 +3,16 @@ import { Role, OrderStatus } from '../src/generated/prisma/enums.js';
 import { PrismaMariaDb } from '@prisma/adapter-mariadb';
 import * as bcrypt from 'bcrypt';
 
+// 从环境变量解析数据库连接信息，支持 Docker 和本地开发
+const dbUrl = process.env.DATABASE_URL || 'mysql://root:root@localhost:3307/canteen';
+const url = new URL(dbUrl);
+
 const adapter = new PrismaMariaDb({
-  host: 'localhost',
-  port: 3307,
-  user: 'root',
-  password: 'root',
-  database: 'canteen',
+  host: url.hostname,
+  port: parseInt(url.port) || 3306,
+  user: url.username,
+  password: url.password,
+  database: url.pathname.replace('/', ''),
 });
 
 const prisma = new PrismaClient({ adapter });
