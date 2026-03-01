@@ -1,5 +1,6 @@
 # ============ 构建 web-client ============
 FROM node:20-alpine AS build-web-client
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
@@ -11,6 +12,7 @@ RUN pnpm build
 
 # ============ 构建 system-admin ============
 FROM node:20-alpine AS build-system-admin
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 RUN apk add --no-cache git
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -20,10 +22,13 @@ COPY system-admin/package.json system-admin/pnpm-lock.yaml system-admin/pnpm-wor
 COPY system-admin/packages/ ./packages/
 RUN pnpm install --frozen-lockfile
 COPY system-admin/ .
+# 强制等待上一个构建完成，避免并发导致的内存溢出 (OOM)
+COPY --from=build-web-client /app/dist /tmp/web-dist
 RUN pnpm build
 
 # ============ 构建 merchant-admin ============
 FROM node:20-alpine AS build-merchant-admin
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 RUN apk add --no-cache git
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -33,6 +38,8 @@ COPY merchant-admin/package.json merchant-admin/pnpm-lock.yaml merchant-admin/pn
 COPY merchant-admin/packages/ ./packages/
 RUN pnpm install --frozen-lockfile
 COPY merchant-admin/ .
+# 强制等待上一个构建完成，避免并发导致的内存溢出 (OOM)
+COPY --from=build-system-admin /app/dist /tmp/sys-dist
 RUN pnpm build
 
 # ============ Nginx 最终镜像 ============
