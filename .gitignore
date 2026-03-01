@@ -1,7 +1,6 @@
 # Logic
 node_modules/
 dist/
-build/
 out/
 coverage/
 
